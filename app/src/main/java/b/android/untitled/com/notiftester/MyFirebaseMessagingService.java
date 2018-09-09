@@ -17,7 +17,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
-    private static final String CHANNEL_ID="NotifTester";
+    private static final String CHANNEL_ID="Updates";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -27,7 +27,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationManager manager =(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel("Updates",
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,
                     "ATMOS Updates", NotificationManager.IMPORTANCE_HIGH);
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
@@ -39,11 +39,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder( this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.googleg_disabled_color_18)
+                .setColor(getResources().getColor(R.color.colorPrimary))
                 .setContentTitle("Firebase Message Title")
-                .setContentText(s)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setContentText(s);
         Log.d("FIREBASE MESSAGING","Notification Builder is built");
-        manager.notify(1, mBuilder.build());
+        manager.notify(0, mBuilder.build());
         Log.d("FIREBASE MESSAGING","Notification sent");
     }
 
