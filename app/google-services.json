@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "157978564117-hhn6sn8lecf7639m3v2gif8slt466hiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "b.android.untitled.com.notiftester",
+            "certificate_hash": "31663427e40f4a02c970f77ef63f56afa034f1ac"
+          }
+        },
+        {
           "client_id": "157978564117-p1t13v14h6q8krj4umpomnv9c0ulukk1.apps.googleusercontent.com",
           "client_type": 3
         }

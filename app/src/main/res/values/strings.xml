@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NotifTester</string>
+    <string name="msg_subscribed">Subscribed</string>
+    <string name="msg_subscribe_failed">Subscription failed</string>
 </resources>

@@ -6,6 +6,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -16,12 +17,22 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        Log.d("FIREBASE MESSAGING","Callback is successful Jai Mahishmathi");
+        String s = remoteMessage.getData().get("body");
+        Log.d("FIREBASE MESSAGING",s);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder( this, CHANNEL_ID)
-                .setContentTitle(remoteMessage.getNotification().getTitle())
-                .setContentText(remoteMessage.getNotification().getBody())
+                .setSmallIcon(R.drawable.googleg_disabled_color_18)
+                .setContentTitle("Firebase Message Title")
+                .setContentText(s)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        Log.d("FIREBASE MESSAGING","Notification Builder is built");
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(1, mBuilder.build());
+        Log.d("FIREBASE MESSAGING","Notification sent");
+    }
 
+    @Override
+    public void onDeletedMessages() {
+        super.onDeletedMessages();
     }
 }
